@@ -46,7 +46,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color:rgb(209, 206, 206);
+  background-color:rgb(231, 227, 227);
 }
 
 video {
@@ -63,7 +63,7 @@ video {
 .options {
   padding: 1rem;
   display: flex;
-  background-color: #fff;
+  background-color: rgb(231, 227, 227);
 }
 
 .options__left {
@@ -94,13 +94,14 @@ video {
 .main__right {
   display: flex;
   flex-direction: column;
-  flex: 0.3;
-  background-color: rgb(209, 206, 206);
+  flex: 0.295;
+  background-color: rgb(231, 227, 227);
 }
 
 .main__chat_window {
   flex-grow: 1;
   overflow-y: scroll;
+
 }
 
 .main__chat_window::-webkit-scrollbar {
@@ -128,7 +129,8 @@ video {
 .messages {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+   margin: 1rem;
+ 
 }
 
 /* .message {
@@ -141,12 +143,15 @@ video {
   /* padding: 20px;  */
   border-radius: 4px; 
   margin: 10px;
-  max-width: 300px;
+  max-width: 100%;
   position: relative;
+
+  /* margin-top: 20px; */
 }
 .incoming {
   background: #fff;
   color: black;  
+  float: left;
 }
 .outgoing {
   background: #DCF8C6;
@@ -169,11 +174,16 @@ video {
 
 .message > span {
   /* background-color: var(--main-dark); */
-  margin: 0.5rem 0;
+  /* margin: 0.5rem 0; */
   padding: 0.5rem;
   border-radius: 5px;
   /* color: #fff; */
 }
+
+.time{
+  font-size: 10px;
+}
+
 
 #video-grid {
   display: flex;
@@ -214,16 +224,22 @@ video {
 }
 .main__center{
   flex: 0.4;
-  align-items: center;
-  text-align: center;
+
 }
 #symbol {
   font-size: 2em;
+  margin-right: 40px;
+}
+.board p{
+  margin-right: 40px;
 }
 .board {
   padding-top: 10px;
   margin: auto;
-  width: 350px;
+  padding-left:30px ;
+  width:350px;
+  text-align: center;
+  /* border: 1px solid red; */
 }
 .board button {
   height: 100px;
@@ -231,16 +247,19 @@ video {
   margin: 0px;
   padding: 0px;
   float: left;
-  margin-right: 10px;
+  margin-right: 8px;
   margin-bottom: 10px;
   font-size: 3em;
 }
 
 #messages {
   font-size: 1.9em;
+  margin-right: 40px;
 }
 #find_opp{
-  margin: 20px;
+  margin-left: 28px;
+  margin-top: 40px;
+  /* margin-right: 20px; */
   height: 40px;
   width: 90%;
   font-size: 18px;

@@ -4,13 +4,8 @@ const myVideo = document.createElement("video");
 // const showChat = document.querySelector("#showChat");
 const backBtn = document.querySelector(".header__back");
 
-const findOpp  = document.querySelector("#find_opp");
-findOpp.addEventListener("click", () => {
-  prompt(
-    "Copy this link and send it to people you want to play with",
-    window.location.href
-  );
-});
+// const findOpp  = document.querySelector("#find_opp");
+
 
 
 
@@ -169,15 +164,17 @@ stopVideo.addEventListener("click", () => {
 // });
 
 socket.on("createMessage", (message, userName) => {
+  var time = new Date();
+  let cur_time = time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
   messages.innerHTML =
     messages.innerHTML +
     `<div class="message">
-        <b ><i class="far fa-user-circle"></i> <span> ${userName === user ? "me" : userName
-    }</span> </b>
         <span ${userName===user ? "class=outgoing" 
-       : "class=incoming"}>${message}</span>
+       : "class=incoming"}>${message}  <span class="time"> ${cur_time} <span></span>
+       
     </div>`;
 });
+
 
 
 
@@ -319,3 +316,21 @@ $(function () {
     //$('.board > button').on('click', makeMove);
     $(".cell").on("click", makeMove);
 });
+
+$(function (){
+  $('.board button').attr('disabled', false);
+  $("#find_opp").on("click",linkFind);
+});
+
+
+function linkFind(){
+   prompt(
+    "Copy this link and send it to people you want to play with",
+    window.location.href
+  );
+}
+
+// findOpp.addEventListener("click", (e) => {
+//   console.log("Hello");
+
+// });
