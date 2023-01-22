@@ -2,8 +2,8 @@ const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 // const showChat = document.querySelector("#showChat");
-const backBtn = document.querySelector(".header__back");
-
+// const backBtn = document.querySelector(".header__back");
+let findOp = document.getElementById("find_opp")
 // const findOpp  = document.querySelector("#find_opp");
 
 
@@ -12,12 +12,12 @@ const backBtn = document.querySelector(".header__back");
 
 myVideo.muted = true;
 
-backBtn.addEventListener("click", () => {
-  document.querySelector(".main__left").style.display = "flex";
-  document.querySelector(".main__left").style.flex = "1";
-  document.querySelector(".main__right").style.display = "none";
-  document.querySelector(".header__back").style.display = "none";
-});
+// backBtn.addEventListener("click", () => {
+//   document.querySelector(".main__left").style.display = "flex";
+//   document.querySelector(".main__left").style.flex = "1";
+//   document.querySelector(".main__right").style.display = "none";
+//   document.querySelector(".header__back").style.display = "none";
+// });
 
 // showChat.addEventListener("click", () => {
 //   document.querySelector(".main__right").style.display = "flex";
@@ -179,7 +179,7 @@ socket.on("createMessage", (message, userName) => {
 
 
 myTurn = true, symbol;
-
+let arr=[];
 // One of the rows must be equal to either of these
 // value for
 // the game to be over
@@ -228,19 +228,24 @@ function isGameOver() {
 }
 
 function renderTurnMessage() {
-    // Disable the board if it is the opponents turn
-    if (!myTurn) {
-        $('#messages').text('Your opponent\'s turn');
-        //$('.board button').attr('disabled', true);
-        $('.cell').attr('disabled', true);
+  if(arr.length == 9){
+    $('#messages').text('Game Draw');
+  }else{
+     // Disable the board if it is the opponents turn
+     if (!myTurn) {
+      $('#messages').text('Your opponent\'s turn');
+      //$('.board button').attr('disabled', true);
+      $('.cell').attr('disabled', true);
 
-        // Enable the board if it is your turn
-    } else {
-        $('#messages').text('Your turn.');
-        //$('.board button').removeAttr('disabled');
-        $('.cell').removeAttr('disabled');
+      // Enable the board if it is your turn
+  } else {
+      $('#messages').text('Your turn.');
+      //$('.board button').removeAttr('disabled');
+      $('.cell').removeAttr('disabled');
 
-    }
+  }
+  }
+   
 }
 
 function makeMove(e) {
@@ -267,16 +272,17 @@ function makeMove(e) {
 
 // Event is called when either player makes a move
 socket.on('move.made', function (data) {
+
     // Render the move, data.position holds the target cell ID
     $('#' + data.position).text(data.symbol);
-
+    arr.push(data);
     // If the symbol is the same as the player's symbol,
     // we can assume it is their turn
     myTurn = (data.symbol !== symbol);
 
     // If the game is still going, show who's turn it is
     if (!isGameOver()) {
-        return renderTurnMessage();
+        return renderTurnMessage(arr);
     }
 
     // If the game is over Show the message for the loser
@@ -295,6 +301,8 @@ socket.on('move.made', function (data) {
 // Set up the initial state when the game begins
 // This method is called from the server
 socket.on('game.begin', function (data) {
+
+  findOp.style.display = "none"
     // The server will asign X or O to the player
     $("#symbol").html(data.symbol);  // Show the players symbol
     symbol = data.symbol;
@@ -306,6 +314,7 @@ socket.on('game.begin', function (data) {
 
 // Disable the board if the opponent leaves
 socket.on('opponent.left', function () {
+    findOp.style.display="block";
     $('#messages').text('Your opponent left the game.');
     //$('.board button').attr('disabled', true);
     $('.cell').attr('disabled', true);
@@ -324,6 +333,7 @@ $(function (){
 
 
 function linkFind(){
+ 
    prompt(
     "Copy this link and send it to people you want to play with",
     window.location.href

@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require('dotenv').config()
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
@@ -15,7 +16,7 @@ const opinions = {
 
 app.use("/peerjs", ExpressPeerServer(server, opinions));
 app.use(express.static("public"));
-
+require('dotenv').config()
 app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
@@ -111,5 +112,5 @@ io.on("connection", (socket) => {
   });
 
 });
-
-server.listen(process.env.PORT || 3030);
+// console.log(process.env.PORT);
+server.listen(3030);
