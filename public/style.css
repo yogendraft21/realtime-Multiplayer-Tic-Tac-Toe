@@ -39,6 +39,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.items{
+  display: flex;
+  align-items: center;
+}
 .items a{
   margin-left: 20px;
   text-decoration: none;
@@ -47,6 +51,22 @@
 }
 .username p{
   color: #2f80ec;
+}
+
+.profile{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.profile > img{
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  border: 2px solid rgb(77, 171, 214);
 }
 .header > div > h3 {
   color: #fafafa;;
@@ -84,6 +104,7 @@ video {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
+  border: 3px solid rgb(82, 255, 47);
 }
 
 .options {

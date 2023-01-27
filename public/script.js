@@ -28,6 +28,8 @@ myVideo.muted = true;
 
 const user = prompt("Enter your name");
 
+document.getElementById("player-name").innerText  = `Your Name: ${user}`
+
 var peer = new Peer({
   host: '127.0.0.1',
   port: 3030,
