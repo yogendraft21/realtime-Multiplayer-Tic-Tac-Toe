@@ -14,7 +14,7 @@ This project made during my construct week within a week. It include many more F
 
 ![room_created](https://user-images.githubusercontent.com/110186112/217439662-47fe7e6d-07c2-4ce6-b70a-4e7fa384d086.PNG)
 
-**3 - Just Click on Find Opponent Button and Copy the link and paste the link into new window and press Enter!**
+**3 - Just Click on Invite Opponent Button and Copy the link and paste the link into new window and press Enter!**
 
 ![user_paired](https://user-images.githubusercontent.com/110186112/217439804-512a23c1-22b7-4a55-9b48-ce6e9078b541.PNG)
 
